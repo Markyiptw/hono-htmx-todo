@@ -24,4 +24,11 @@ app.use(
   })
 );
 
+app.use(
+  "/htmx.min.js",
+  serveStatic({
+    path: "node_modules/htmx.org/dist/htmx.min.js",
+  })
+);
+
 export default app;

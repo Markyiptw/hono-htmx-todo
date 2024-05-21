@@ -12,8 +12,9 @@ const Root: FC = (props) => {
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Template • TodoMVC</title>
-        <link rel="stylesheet" href="assets/base.css" />
-        <link rel="stylesheet" href="assets/index.css" />
+        <link rel="stylesheet" href="/assets/base.css" />
+        <link rel="stylesheet" href="/assets/index.css" />
+        <script src="/assets/htmx.min.js"></script>
       </head>
       <body>
         ${props.children}
@@ -24,28 +25,30 @@ const Root: FC = (props) => {
 
 app.get("/", (c) => {
   return c.html(
-    <Root
-      children={html`
-        <section class="todoapp">
-          <header class="header">
+    <Root>
+      <section className="todoapp">
+        <header className="header">
+          <form hx-post="/todo-items">
             <h1>todos</h1>
             <input
-              class="new-todo"
+              className="new-todo"
               placeholder="What needs to be done?"
               autofocus
             />
-          </header>
-        </section>
-        <footer class="info">
-          <p>Double-click to edit a todo</p>
-          <!-- Change this out with your name and url ↓ -->
-          <p>Created by <a href="http://todomvc.com">you</a></p>
-          <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
-        </footer>
-        <!-- Scripts here. Don't remove ↓ -->
-        <script src="assets/base.js"></script>
-      `}
-    />
+          </form>
+        </header>
+      </section>
+      <footer className="info">
+        <p>Double-click to edit a todo</p>
+        {/* Change this out with your name and url ↓ */}
+        <p>
+          Created by <a href="http://todomvc.com">you</a>
+        </p>
+        <p>
+          Part of <a href="http://todomvc.com">TodoMVC</a>
+        </p>
+      </footer>
+    </Root>
   );
 });
 
