@@ -1,12 +1,11 @@
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import assets from "@/routes/assets";
+import index from "@/routes/index";
 
 const app = new Hono();
 
-app.get("/", (c) => {
-  return c.text("Hello Hono!");
-});
+app.route("/", index);
 
 app.route("/assets", assets);
 
