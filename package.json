@@ -5,9 +5,7 @@
   "dependencies": {
     "@hono/node-server": "^1.11.1",
     "hono": "^4.3.9",
-    "htmx.org": "^1.9.12",
-    "todomvc-app-css": "^2.4.3",
-    "todomvc-common": "^1.0.5"
+    "htmx.org": "^1.9.12"
   },
   "devDependencies": {
     "@types/node": "^20.11.17",
