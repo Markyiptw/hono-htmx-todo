@@ -14,6 +14,7 @@ app.use(
   "/*",
   serveStatic({
     root: "./",
+    rewriteRequestPath: (path) => path.replace("/static", "/src/static"),
   })
 );
 
