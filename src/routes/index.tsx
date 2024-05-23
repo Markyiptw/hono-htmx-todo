@@ -1,39 +1,10 @@
+import { Todo } from "@/components";
 import { todos } from "@/utils/todos";
 import { Hono } from "hono";
 import { html } from "hono/html";
 import type { FC } from "hono/jsx";
 
 const app = new Hono();
-
-const Todo: FC<(typeof todos)[0]> = (props) => (
-  <div data-description={props.description}>
-    <input type="hidden" name="id" value={props.id} />
-    <button
-      class="delete"
-      hx-target="closest div"
-      hx-swap="outerHTML"
-      hx-delete={`/todos/${props.id}`}
-    >
-      ❌
-    </button>{" "}
-    <button
-      class="edit"
-      hx-target="closest div"
-      hx-swap="outerHTML"
-      hx-get={`/todos/${props.id}/edit`}
-    >
-      📝
-    </button>{" "}
-    <span
-      hx-target="closest div"
-      hx-swap="outerHTML"
-      hx-post={`/todos/${props.id}/toggle`}
-      class={props.complete ? "done" : undefined}
-    >
-      {props.description}
-    </span>
-  </div>
-);
 
 const Document: FC = (props) => html`
   <html>
