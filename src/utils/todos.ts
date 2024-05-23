@@ -27,8 +27,11 @@ class Todos {
       complete: false,
     });
   }
-}
 
+  get(id: Todo["id"]) {
+    return this.todos.find((todo) => todo.id === id);
+  }
+}
 export const todos = new Todos();
 
 ["Bake a cake", "Feed the cat", "Take out the rubbish"].forEach(
