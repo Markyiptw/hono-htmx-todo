@@ -29,4 +29,15 @@ app.delete("/:id", (c) => {
   return c.body(null);
 });
 
+app.post("/", async (c) => {
+  const body = await c.req.parseBody();
+  const description = body["description"];
+
+  if (typeof description === "string") {
+    todos.add(description);
+  }
+
+  return c.redirect("/");
+});
+
 export default app;

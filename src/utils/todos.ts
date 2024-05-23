@@ -8,8 +8,8 @@ export type Todo = {
 class Todos {
   todos: Todo[];
 
-  constructor(todos: Todo[]) {
-    this.todos = todos;
+  constructor() {
+    this.todos = [];
   }
 
   delete(id: Todo["id"]) {
@@ -18,25 +18,19 @@ class Todos {
       this.todos.splice(index, 1);
     }
   }
+
+  add(description: string) {
+    this.todos.push({
+      description,
+      id: crypto.randomUUID(),
+      createdAt: new Date(),
+      complete: false,
+    });
+  }
 }
 
-export const todos = new Todos([
-  {
-    description: "Bake a cake",
-    id: crypto.randomUUID(),
-    createdAt: new Date(),
-    complete: false,
-  },
-  {
-    description: "Feed the cat",
-    id: crypto.randomUUID(),
-    createdAt: new Date(),
-    complete: false,
-  },
-  {
-    description: "Take out the rubbish",
-    id: crypto.randomUUID(),
-    createdAt: new Date(),
-    complete: false,
-  },
-]);
+export const todos = new Todos();
+
+["Bake a cake", "Feed the cat", "Take out the rubbish"].forEach(
+  todos.add.bind(todos)
+);
