@@ -64,7 +64,7 @@ const Document: FC = (props) => html`
 app.get("/", (c) => {
   return c.html(
     <Document>
-      {todos.map((todo) => (
+      {todos.todos.map((todo) => (
         <Todo {...todo} />
       ))}
     </Document>

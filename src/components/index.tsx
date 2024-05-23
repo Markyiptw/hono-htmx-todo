@@ -1,7 +1,7 @@
-import { todos } from "@/utils/todos";
+import type { Todo as ToDoType } from "@/utils/todos";
 import { FC } from "hono/jsx";
 
-export const Todo: FC<(typeof todos)[0]> = (props) => (
+export const Todo: FC<ToDoType> = (props) => (
   <div data-description={props.description}>
     <input type="hidden" name="id" value={props.id} />
     <button
